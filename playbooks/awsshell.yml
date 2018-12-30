@@ -1,0 +1,12 @@
+# aws ec2 instance 
+- hosts: aws
+  remote_user: ec2-user
+  become_method: sudo
+  gather_facts: yes
+  connection: ssh
+  tasks:
+  - name: execute a shell command for listing directory
+    shell: ls -al ~
+    register: result
+  - name: Display the results in json
+    debug: var=result
